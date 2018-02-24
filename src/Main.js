@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
 	}) 
 	const transactions = this.state.data.map((list, i)=>{
 	    return (
-		<TouchableOpacity key={i} style={{"backgroundColor":"#90EE90"}}>
+                <TouchableOpacity key={i} style={{"backgroundColor":"#90EE90"}} onPress={()=>{this.props.navigation.navigate("Transaction",{data: this.state.data})}}>
 		    <View style={{"marginBottom":5,"paddingLeft":5,flexDirection: 'row'}}>
 			<Text style={{ "fontSize": 20}} >{list.key} </Text>
 			<Text style={{alignSelf: 'flex-end',}}>{list.date}</Text>
@@ -74,29 +74,14 @@ var styles = StyleSheet.create({
 
 })
 
-
-class SettingsScreen extends React.Component {
-    render() {
-	return (
-	    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-		<Text>Settings!</Text>
-		<Button
-		    title="Go to Home"
-		    onPress={() => this.props.navigation.navigate('Home')}
-		/>
-		<Button
-		    title="Go to Details"
-		    onPress={() => this.props.navigation.navigate('Details')}
-		/>
-	    </View>
-	);
-    }
-}
+import  Settings from './Settings.js'
+import  Transactions from './Transactions.js'
 
 export default TabNavigator(
     {
 	Home: { screen: HomeScreen }, // test can be stackNavs as well
-	Settings: { screen: SettingsScreen },
+        Transaction: { screen: Transactions},
+	Settings: { screen: Settings },
     },
     {
 	navigationOptions: ({ navigation }) => ({
@@ -118,7 +103,7 @@ export default TabNavigator(
 	    activeTintColor: 'tomato',
 	    inactiveTintColor: 'gray',
 	},
-	animationEnabled: false,
+	animationEnabled: true,
 	swipeEnabled: false,
     }
 );
