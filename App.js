@@ -1,23 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+import Main from './src/Main'
+//import NewPost from './src/NewPost.js';
+//import Login from './src/Login.js'
+
+//import { auth } from './src/firebase.js'
+
+
+const Runner = () => { // TODO: Change name of this later
+    return {
+        //NewPost: { // put NewPost first to tell if app is broken
+            //screen: NewPost,
+            //key: 'main0',
+        //},
+        Home: { 
+            screen: Main,
+        },
+        //Login:{
+            //screen: Login,
+        //},
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function RouterSettings() { 
+
+let initRoute;
+let CurrentUser = null
+
+    if (CurrentUser) { 
+        initRoute = "Home"
+        console.log("USER DOES EXIST")
+    } 
+    else {
+        initRoute = "Home"
+    }
+    return{
+        initialRouteName: initRoute, 
+    }
+}
+
+console.log(RouterSettings())
+
+const App = StackNavigator(Runner(), RouterSettings())
+export default App;
+
