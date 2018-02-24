@@ -10,9 +10,9 @@ class HomeScreen extends React.Component {
     state = {
 	current_balance: 0,
 	data:[
-	    {key: 'Devin', balance: 0, date: '01/05/2017'},
-	    {key: 'Jackson', balance: 20, date: '02/24/2017'},
-	    {key: 'James', balance:400, date: '02/24/2017'},
+	    {id: 122134, key: 'Devin', balance: 0, date: '01/05/2017'},
+	    {id: 122135, key: 'Jackson', balance: 20, date: '02/24/2017'},
+            {id:  122136, key: 'James', balance:400, date: '02/24/2017'},
 	],
     }
 
@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
 	}) 
 	const transactions = this.state.data.map((list, i)=>{
 	    return (
-                <TouchableOpacity key={i} style={{"backgroundColor":"#90EE90"}} onPress={()=>{this.props.navigation.navigate("Transaction",{data: this.state.data})}}>
+                <TouchableOpacity key={i} style={{"backgroundColor":"#90EE90"}} onPress={()=>{this.props.navigation.navigate("Transaction",{data: this.state.data, id: list.id})}}>
 		    <View style={{"marginBottom":5,"paddingLeft":5,flexDirection: 'row'}}>
 			<Text style={{ "fontSize": 20}} >{list.key} </Text>
 			<Text style={{alignSelf: 'flex-end',}}>{list.date}</Text>
