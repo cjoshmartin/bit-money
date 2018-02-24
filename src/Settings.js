@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, Text, View, TouchableHighlight,TouchableOpacity,StyleSheet,Button } from 'react-native';
-
+import QRCode from 'react-native-qrcode';
 
 export default class Settings extends React.Component {
 
@@ -10,9 +10,15 @@ export default class Settings extends React.Component {
     render() {
 	return (
 	    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+		<QRCode
+		    value={"http://www.cjoshmartin.com"}
+		    size={200}
+		    bgColor='purple'
+		    fgColor='white'/>
+		<Text style={{marginTop:5, fontWeight: "500"}}> Josh Martin </Text>
 		<Button
-		    title="Go to Home"
-		    onPress={() => this.props.navigation.navigate('Home')}
+		    title="Scan QR Code"
+		    onPress={() => this.props.navigation.navigate('scan_qr')}
 		/>
 		<Button
 		    title="Go to Details"

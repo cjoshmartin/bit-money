@@ -76,7 +76,7 @@ var styles = StyleSheet.create({
 
 import  Settings from './Settings.js'
 import  Transactions from './Transactions.js'
-
+import 
 export default TabNavigator(
     {
 	Home: { screen: HomeScreen }, // test can be stackNavs as well

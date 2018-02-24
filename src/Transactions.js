@@ -8,13 +8,24 @@ export default class Transactions extends React.Component {
         title: 'Transactions',
     };
     state = {
-        data:[],
+	data:[
+	    {id: 122134, key: 'Devin', balance: 0, date: '01/05/2017'},
+	    {id: 122135, key: 'Jackson', balance: 20, date: '02/24/2017'},
+            {id:  122136, key: 'James', balance:400, date: '02/24/2017'},
+	],
         id: '',
     }
 
     componentDidMount() {
-        this.setState({data: this.props.navigation.state.params.data})
-        this.setState({id:this.props.navigation.state.params.id})
+	//if(this.props)
+	    if(this.props.navigation)
+		if(this.props.navigation.state)
+		    if(this.props.navigation.state.params)	
+			if (this.props.navigation.state.params.data)
+			{
+			    this.setState({data: this.props.navigation.state.params.data})
+			    this.setState({id:this.props.navigation.state.params.id})
+			}
     }
     _renderlistitem({ item })
     {
@@ -48,7 +59,7 @@ export default class Transactions extends React.Component {
   <View  style={{
                 backgroundColor:'#13262f', 
             }} >
-	<Text style={{fontSize:40}}> This is fake</Text>
+	<Text style={{fontSize:40, color:"white"}}> This is fake</Text>
       </View>
     );
   }
